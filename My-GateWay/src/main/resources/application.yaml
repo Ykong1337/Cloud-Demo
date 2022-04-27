@@ -1,0 +1,35 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: cloud-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: route-payment-getOne
+          uri: lb://payment-service
+          predicates:
+            - Path=/payment/get/**
+
+        - id: route-payment-getAll
+          uri: lb://payment-service
+          predicates:
+            - Path=/payment/getAll/**
+
+        - id: route-payment-discovery
+          uri: lb://payment-service
+          predicates:
+            - Path=/payment/discovery/**
+
+        - id: route-guonei
+          uri: https://news.baidu.com/guonei
+          predicates:
+            - Path=/guonei
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+

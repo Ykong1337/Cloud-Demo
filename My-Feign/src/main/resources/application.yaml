@@ -1,0 +1,15 @@
+server:
+  port: 80
+
+
+spring:
+  application:
+    name: my-feign
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+ribbon:
+  ConnectTimeout: 10000
+  ReadTimeout: 10000
